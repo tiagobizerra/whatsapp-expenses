@@ -1,8 +1,8 @@
+#!/usr/local/bin/python3
+
 '''
 WhatsApp Expenses Modules
 '''
-
-#!/usr/loca/bin/python3
 
 import logging
 import platform
@@ -11,7 +11,7 @@ import sys
 class HostnameFilter(logging.Filter):
 
     '''
-    logging
+    Logging
     '''
 
     hostname = platform.node()

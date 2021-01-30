@@ -1,11 +1,11 @@
+#!/usr/local/bin/python3
 '''
 WhatsApp expenses
 Calculates your expenses based on information sent to an exported WhatsApp channel
 '''
-#!/usr/loca/bin/python3
 
 import argparse
-from whatsapp_expenses.wpe import wpefile
+from wpe import wpefile
 
 PARSER = argparse.ArgumentParser(
     description='Calculates expenses based on an exported WhatsApp channel history')
