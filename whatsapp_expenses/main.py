@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3
+#!/usr/local/bin/python
 '''
 WhatsApp expenses
 Calculates your expenses based on information sent to an exported WhatsApp channel
