@@ -7,7 +7,7 @@ Report functions
 import logging
 import os
 import sys
-from expenses import create_expense, validate_expense
+from expenses import create_expense, create_expense_files, validate_expense, write_expense
 
 def create_report_metadata(metadata):
 
@@ -46,6 +46,8 @@ def build_report(filename):
     Function to build report based on file
     '''
 
+    expense_files = create_expense_files()
+
     valid_expenses = 0
     invalid_expenses = 0
 
@@ -73,14 +75,16 @@ def build_report(filename):
                 logging.info('Valid! Creating expense: %s', expense)
                 valid_expenses += 1
                 create_expense(expense)
+                write_expense(expense, True, expense_files)
 
             else:
                 logging.info('Invalid! Skipping expense: %s', expense)
                 invalid_expenses += 1
+                write_expense(expense, False, expense_files)
 
         else:
 
-            logging.info('Reading report from previous expense')
+            logging.info('Reading expense info from previous report')
             expense = line.split(' ')
 
             if bool(validate_expense(expense)) is True:
@@ -88,9 +92,11 @@ def build_report(filename):
                 logging.info('Valid! Creating expense: %s', expense)
                 valid_expenses += 1
                 create_expense(expense)
+                write_expense(expense, True, expense_files)
 
             else:
                 logging.info('Invalid! Skipping expense: %s', expense)
                 invalid_expenses += 1
+                write_expense(expense, False, expense_files)
 
     wpe_filename.close()
