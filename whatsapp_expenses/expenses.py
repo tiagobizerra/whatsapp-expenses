@@ -5,6 +5,11 @@ Expenses functions
 '''
 
 def format_expense(raw_expense):
+
+    '''
+    Format a expense
+    '''
+
     return None
 
 def validate_expense(formated_expense):
