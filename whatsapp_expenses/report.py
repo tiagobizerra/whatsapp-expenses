@@ -9,6 +9,17 @@ import os
 import sys
 from expenses import create_expense, create_expense_files, validate_expense, write_expense
 
+def list_to_string(list_to_convert):
+
+    '''
+    Convert a list into a string
+    '''
+
+    final_string = " ".join(str(item) for item in list_to_convert)
+
+    return (final_string)
+
+
 def create_report_metadata(metadata):
 
     '''
@@ -65,8 +76,11 @@ def build_report(filename):
             report_metadata = create_report_metadata(line)
             logging.info(report_metadata)
 
-            expense = line.split(' ')[3:]
-            expense[-1] = expense[-1].rstrip("\n")
+            raw_expense = line.split(' ')[3:]
+            raw_expense[-1] = raw_expense[-1].rstrip("\n")
+
+            expense = list_to_string(raw_expense)
+            print(expense)
 
             logging.info('Checking if expense is valid: %s', expense)
 
