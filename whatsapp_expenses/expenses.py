@@ -6,6 +6,7 @@ Expenses functions
 
 import logging
 import os
+import re
 import sys
 
 def format_expense(raw_expense):
@@ -16,13 +17,16 @@ def format_expense(raw_expense):
 
     return None
 
-def validate_expense(formated_expense):
+def validate_expense(expense_string):
 
     '''
     Validate a expense
     '''
 
-    if len(formated_expense) == 2 and (formated_expense[0] and formated_expense[1]):
+    if re.match('^\\d+\\s', expense_string) or re.match('^\\d+(\\.|\\,)\\d+\\s', expense_string):
+        return True
+
+    if re.match('^\\D+\\s', expense_string) and re.match('\\s\\d+(\\.|\\,)\\d+$', expense_string):
         return True
 
     return False

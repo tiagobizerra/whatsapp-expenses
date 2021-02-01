@@ -99,7 +99,7 @@ def build_report(filename):
         else:
 
             logging.info('Reading expense info from previous report')
-            expense = line.split(' ')
+            expense = str(line.rstrip("\n"))
 
             if bool(validate_expense(expense)) is True:
 
