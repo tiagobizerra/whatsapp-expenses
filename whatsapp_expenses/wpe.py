@@ -7,7 +7,7 @@ WhatsApp Expenses Modules
 import logging
 import platform
 import sys
-from report import check_report_file, build_report
+from report import check_report_file, build_report, build_expense_report
 
 class HostnameFilter(logging.Filter):
 

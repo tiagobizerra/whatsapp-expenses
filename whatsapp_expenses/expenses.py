@@ -61,14 +61,16 @@ def create_expense_files():
         sys.exit(1)
     else:
         with open(valid_expense_file, 'w') as create_file:
-            create_file.write("Valid Expenses\n")
+            #create_file.write("Valid Expenses\n")
+            pass
 
     if os.path.isfile(invalid_expense_file):
         logging.error('file %s exists', invalid_expense_file)
         sys.exit(1)
     else:
         with open(invalid_expense_file, 'w') as create_file:
-            create_file.write("Invalid Expenses\n")
+            #create_file.write("Invalid Expenses\n")
+            pass
 
     return(valid_expense_file, invalid_expense_file)
 

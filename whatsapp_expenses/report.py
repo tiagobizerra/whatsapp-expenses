@@ -7,7 +7,9 @@ Report functions
 import logging
 import os
 import sys
+from categories import check_category
 from expenses import create_expense, create_expense_files, validate_expense, write_expense
+
 
 def list_to_string(list_to_convert):
 
@@ -54,7 +56,7 @@ def check_report_file(filename):
 def build_report(filename):
 
     '''
-    Function to build report based on file
+    Function to build report files based on whatsapp chat file
     '''
 
     expense_files = create_expense_files()
@@ -114,3 +116,33 @@ def build_report(filename):
                 write_expense(expense, False, expense_files)
 
     wpe_filename.close()
+
+    build_expense_report(expense_files)
+
+def build_expense_report(expense_files):
+
+    '''
+    Build expense report
+    '''
+
+
+    logging.info('Reading file %s', expense_files[0])
+    try:
+        os.path.exists(expense_files[0])
+        os.path.isfile(expense_files[0])
+    except IOError as err:
+        logging.error('Error loading file %s\n%s', expense_files[0], err)
+        sys.exit(1)
+
+    print(expense_files)
+
+    valid_expenses = open(expense_files[0])
+    lines = valid_expenses.readlines()
+    count = 0
+    for line in lines:
+
+        count += 1
+        expense=line.split()
+        print(expense)
+        check_category(str.lower(expense[1]))
+    return expense_files
