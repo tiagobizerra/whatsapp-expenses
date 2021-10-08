@@ -24,6 +24,9 @@ def check_category(item):
                 'bolson',
                 'verduleria',
                 'verdureira',
+                'água',
+                'fraldas',
+                'fralda',
             ],
 
         'delivery':
@@ -37,6 +40,7 @@ def check_category(item):
         'transport':
             [
                 'taxi',
+                'táxi',
                 'uber',
                 'cabify',
                 'subte',
@@ -62,9 +66,13 @@ def check_category(item):
         'fun':
             [
                 'cafe',
+                'café',
                 'saida',
                 'restaurante',
                 'sobremesa',
+                'starbucks',
+                'propina',
+                'gorgeja',
             ],
     }
 

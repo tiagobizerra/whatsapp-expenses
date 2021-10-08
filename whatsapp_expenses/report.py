@@ -125,7 +125,6 @@ def build_expense_report(expense_files):
     Build expense report
     '''
 
-
     logging.info('Reading file %s', expense_files[0])
     try:
         os.path.exists(expense_files[0])
@@ -134,15 +133,21 @@ def build_expense_report(expense_files):
         logging.error('Error loading file %s\n%s', expense_files[0], err)
         sys.exit(1)
 
-    print(expense_files)
+    #print(expense_files)
 
     valid_expenses = open(expense_files[0])
     lines = valid_expenses.readlines()
     count = 0
+    cost_total = 0.0
+    
     for line in lines:
 
         count += 1
         expense=line.split()
         print(expense)
-        check_category(str.lower(expense[1]))
+        category = str(check_category(str.lower(expense[1])))
+        cost = float(expense[0].replace("," , "."))
+        cost_total =+ cost_total + cost 
+
+    print(cost_total)
     return expense_files
